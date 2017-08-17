@@ -9,21 +9,21 @@ body {
 
 #card-container {
 	display: flex;
-	flex: wrap;
 	justify-content: flex-start;
+	flex-wrap: wrap;
 	margin-top: 5%;
 	margin-bottom: auto;
+	height: 100%;
 }
 .card {
 	background-color: white ;
 	height: 300px;
 	width: 300px;
 	box-shadow: 2px 2px grey;
-	margin-right: 20px;
+	margin: 0 20px 20px 0;
 }
 
 .delete-btn {
-	margin-top: 200px;
     margin-left: 220px;
 }
 
