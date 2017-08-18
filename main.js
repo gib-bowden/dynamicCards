@@ -9,21 +9,21 @@ function buildDom(arr) {
 							</div>`;
 		} 
 		document.getElementById("card-container").innerHTML = domString
-		addDeleteEventListener(arr);
+		// addDeleteEventListener(arr);
 	}
 }
 
-function addDeleteEventListener(arr) {
-	var deleteBtns = document.getElementsByClassName("delete-btn") 
-	for (let button of deleteBtns) {
-		button.addEventListener("click", (e) => {
-			var id = Number(e.target.id.replace("delete-btn-",""))
-			arr.splice(id, 1); 
-			saveArryInSession(arr);
-			buildDom(arr);
-		})
-	} 
-}
+// function addDeleteEventListener(arr) {
+
+// 	button.addEventListener("click", (e) => {
+// 		var id = Number(e.target.id.replace("delete-btn-",""))
+// 		arr.splice(id, 1); 
+// 		saveArryInSession(arr);
+// 		buildDom(arr);
+// 		})
+// 	} 
+
+
 
 function addInputToArr(arr) {
 	var field = document.getElementById("input-field")
@@ -61,8 +61,25 @@ function loadPage(arr) {
 		if (e.key === "Enter") {
 				createCard(arr)
 		}
-	}) //add event listern to entire document that creates a card when enter is pressed
+	})
+	
+	document.getElementById("card-container").addEventListener("click", (e) => {
+	    if(e.target.className === "delete-btn") {
+	        //var parent = e.target.parentNode.parentNode;
+	        //var child = e.target.parentNode;
+	        var id = Number(e.target.id.replace("delete-btn-",""))
+	        //parent.removeChild(child);
+	        arr.splice(id, 1); 
+	        saveArryInSession(arr);
+	        buildDom(arr);
+	    }
+	})
 }
 
 var cards = []
 loadPage(cards)
+
+
+document.getElementById("card-container").addEventListener("click",(e) =>{
+	console.log(e);
+})
